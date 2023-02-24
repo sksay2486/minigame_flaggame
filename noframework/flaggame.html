@@ -2,8 +2,75 @@
 <html>
     <head>
         <title>미니게임 - 깃발들기 게임</title>
+        <style>
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
+
+            .header {
+                display: flex;
+                background-color: #dddddd;
+                align-items: center;
+            }
+
+            .option {
+                width: 15%;
+                height: 50px;
+                display: flex;
+                align-items: center;
+            }
+
+            .option span {
+                font-weight: bold;
+            }
+
+            .option input {
+                margin-left: 10px;
+                width: 30px;
+                height: 25px;
+            }
+
+            .playbtn button{
+                width: 100px;
+                height: 25px;
+            }
+        </style>
     </head>
     <body>
-        
+        <div class="header">
+            <div class="option">
+                <span>사용할 깃발 개수(2 ~ 8) :</span>
+                <input id="flagcount" type="number" min="2" max="8" onchange="changeFlagCount();" />
+            </div>
+            <div class="playbtn">
+                <button>Start</button>
+                <button>Stop</button>
+            </div>
+        </div>
+        <div class="body">
+            
+        </div>
+        <script>
+            const changeFlagCount = () => {
+                const flagCount = document.getElementById('flagcount');
+                const flagCountNum = flagCount.value;
+                if(flagCountNum < 2) {
+                    flagCount.value = 2;
+                    alert('2 이상 값을 입력하세요');
+                }
+                else if(flagCountNum > 8) {
+                    flagCount.value = 8;
+                    alert('8 이하 값을 입력하세요');
+                }
+            }
+        </script>
     </body>
 </html>
